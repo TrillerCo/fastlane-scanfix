@@ -198,7 +198,7 @@ module Scan
       UI.message("Debug - Getting result_bundle_path")
       if result_bundle_path.nil?
         UI.message("Debug - No cached result_bundle_path")
-        result_bundle_path = Scan.config[:output_directory]
+        result_bundle_path = Scan.config[:output_directory] + "/report.xcresult"
         UI.message("Debug - looking in " + result_bundle_path)
       end
 
