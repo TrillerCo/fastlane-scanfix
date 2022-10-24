@@ -195,6 +195,13 @@ module Scan
 
       result_bundle_path = Scan.cache[:result_bundle_path]
 
+      UI.message("Debug - Getting result_bundle_path")
+      if result_bundle_path.nil?
+        UI.message("Debug - No cached result_bundle_path")
+        result_bundle_path = Scan.config[:output_directory]
+        UI.message("Debug - looking in " + result_bundle_path)
+      end
+
       # Looks for xcresult file in derived data if not specifically set
       if result_bundle_path.nil?
         xcresults = find_xcresults_in_derived_data
