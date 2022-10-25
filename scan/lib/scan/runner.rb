@@ -198,7 +198,7 @@ module Scan
       UI.message("Debug - Getting result_bundle_path")
       if result_bundle_path.nil?
         UI.message("Debug - No cached result_bundle_path")
-        result_bundle_path = Scan.config[:output_directory] + "/report.xcresult"
+        result_bundle_path = Dir[Scan.config[:output_directory] + "/report.xcresult"]
         UI.message("Debug - looking in " + result_bundle_path)
       end
 
@@ -250,6 +250,10 @@ module Scan
           params[:output_filename] = output_junit_filename || "report.junit"
           params[:output_directory] = output_path
         end
+      end
+
+      params.each do |key, value|
+        UI.message("#{key}:#{value}")
       end
 
       resulting_paths = Trainer::TestParser.auto_convert(params)
