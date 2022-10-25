@@ -198,8 +198,7 @@ module Scan
       UI.message("Debug - Getting result_bundle_path")
       if result_bundle_path.nil?
         UI.message("Debug - No cached result_bundle_path")
-        result_bundle_path = Dir[Scan.config[:output_directory] + "/report.xcresult"]
-        UI.message("Debug - looking in " + File.absolute_path(result_bundle_path))
+        result_bundle_path = Dir[Scan.config[:output_directory] + "/report.xcresult"].first
       end
 
       # Looks for xcresult file in derived data if not specifically set
